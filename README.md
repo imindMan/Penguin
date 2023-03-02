@@ -24,8 +24,8 @@
   <div>
     <h2>Contributors</h2>
     <p>Thanks to all the contributors who helped make Penguin possible! Check out the contributors on our GitHub page:</p>
-    <a href="https://github.com/AnAverageBeing/Penguin/graphs/contributors">
-      <img src="https://contrib.rocks/image?repo=AnAverageBeing/Penguin" alt="Contributors" />
+    <a href="https://github.com/PenguinLang/Penguin/graphs/contributors">
+      <img src="https://contrib.rocks/image?repo=PenguinLang/Penguin" alt="Contributors" />
     </a>
   </div>
   <hr>
