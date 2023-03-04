@@ -1,2 +1,1 @@
-# Documentation
-Everything will be well documented.
+# DOCUMENTATION (SOON)
