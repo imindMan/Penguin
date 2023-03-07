@@ -16,7 +16,16 @@ while {
 if {
 
 }
-
+<=
+>=
+==
+!=
+++
+--
++=
+-=
+/=
+*=
 function add using (number x,number y) returns number{
 	return x + y;
 }`

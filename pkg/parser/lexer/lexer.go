@@ -152,12 +152,12 @@ func (l *Lexer) getOtherToken() *Token {
 			switch *l.peakNextChar() {
 			case '+':
 				{
-					l.GetNextToken()
+					l.nextChar()
 					token = Token{Type: INCREMENT, Content: string(INCREMENT)}
 				}
 			case '=':
 				{
-					l.GetNextToken()
+					l.nextChar()
 					token = Token{Type: ADD_ASSIGN, Content: string(ADD_ASSIGN)}
 				}
 			default:
@@ -172,12 +172,12 @@ func (l *Lexer) getOtherToken() *Token {
 			switch *l.peakNextChar() {
 			case '-':
 				{
-					l.GetNextToken()
+					l.nextChar()
 					token = Token{Type: DECREMENT, Content: string(DECREMENT)}
 				}
 			case '=':
 				{
-					l.GetNextToken()
+					l.nextChar()
 					token = Token{Type: SUBTRACT_ASSIGN, Content: string(SUBTRACT_ASSIGN)}
 				}
 			default:
@@ -192,7 +192,7 @@ func (l *Lexer) getOtherToken() *Token {
 			switch *l.peakNextChar() {
 			case '=':
 				{
-					l.GetNextToken()
+					l.nextChar()
 					token = Token{Type: MULTIPLY_ASSIGN, Content: string(MULTIPLY_ASSIGN)}
 				}
 			default:
@@ -207,7 +207,7 @@ func (l *Lexer) getOtherToken() *Token {
 			switch *l.peakNextChar() {
 			case '=':
 				{
-					l.GetNextToken()
+					l.nextChar()
 					token = Token{Type: DIVIDE_ASSIGN, Content: string(DIVIDE_ASSIGN)}
 				}
 			default:
@@ -229,7 +229,7 @@ func (l *Lexer) getOtherToken() *Token {
 	case '<':
 		{
 			if *l.peakNextChar() == '=' {
-				l.GetNextToken()
+				l.nextChar()
 				token = Token{Type: LESS_THAN_EQUALS_TO, Content: string(LESS_THAN_EQUALS_TO)}
 			} else {
 				token = Token{Type: LESS_THAN, Content: string(LESS_THAN)}
@@ -238,7 +238,7 @@ func (l *Lexer) getOtherToken() *Token {
 	case '>':
 		{
 			if *l.peakNextChar() == '=' {
-				l.GetNextToken()
+				l.nextChar()
 				token = Token{Type: GREATER_THAN_EQUALS_TO, Content: string(GREATER_THAN_EQUALS_TO)}
 			} else {
 				token = Token{Type: GREATER_THAN, Content: string(GREATER_THAN)}
@@ -247,7 +247,7 @@ func (l *Lexer) getOtherToken() *Token {
 	case '=':
 		{
 			if *l.peakNextChar() == '=' {
-				l.GetNextToken()
+				l.nextChar()
 				token = Token{Type: EQUALS_TO, Content: string(EQUALS_TO)}
 			} else {
 				token = Token{Type: ASSIGN, Content: string(ASSIGN)}
@@ -256,7 +256,7 @@ func (l *Lexer) getOtherToken() *Token {
 	case '!':
 		{
 			if *l.peakNextChar() == '=' {
-				l.GetNextToken()
+				l.nextChar()
 				token = Token{Type: NOT_EQUALS_TO, Content: string(NOT_EQUALS_TO)}
 			} else {
 				token = Token{Type: LOGICAL_NOT, Content: string(LOGICAL_NOT)}
