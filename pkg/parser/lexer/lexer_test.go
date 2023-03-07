@@ -3,10 +3,12 @@ package lexer_test
 import (
 	"Penguin/pkg/parser/lexer"
 	"fmt"
+	"log"
 	"testing"
 )
 
-var code string = `let x = 10;
+var code string = `
+let x = 10;
 function () {}
 while {
 
@@ -17,16 +19,18 @@ if {
 
 function add using (number x,number y) returns number{
 	return x + y;
-}
-`
+}`
 
 func TestGetNextToken(t *testing.T) {
-	lexer := lexer.NewLexer(code)
+	lxr := lexer.NewLexer(code)
 	for {
-		token := *lexer.GetNextToken()
+		token := *lxr.GetNextToken()
 		if token.Content == "eof" {
 			break
 		}
-		println(fmt.Sprintf("%d:%d %s \"%s\"", lexer.Line, lexer.Column, string(token.Type), token.Content))
+		if token.Content == "error" {
+			log.Fatalf("ERROR tokenizing %d:%d", lxr.Line, lxr.Column)
+		}
+		println(fmt.Sprintf("%d:%d %s \"%s\"", lxr.Line, lxr.Column, string(token.Type), token.Content))
 	}
 }

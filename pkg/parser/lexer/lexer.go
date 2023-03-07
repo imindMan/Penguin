@@ -36,16 +36,12 @@ func NewLexer(data string) *Lexer {
 }
 
 func (l *Lexer) GetNextToken() *Token {
-	token := Token{}
-
-	l.skipWhitespace()
-
-	//Handling EOF
+	token := Token{Type: ERROR, Content: string(ERROR)}
+	// Handling EOF
 	if l.Char == nil {
-		token.Type = EOF
-		token.Content = string(EOF)
-		return &token
+		token = Token{Type: EOF, Content: string(EOF)}
 	}
+	l.skipWhitespace()
 	switch {
 	case l.isLetter():
 		{
@@ -59,6 +55,9 @@ func (l *Lexer) GetNextToken() *Token {
 	default:
 		{
 			token = *l.getOtherToken()
+			if token.Type == ERROR {
+				return &token
+			}
 		}
 	}
 
@@ -130,7 +129,11 @@ func (l *Lexer) readStringOrCharacter() string {
 
 func (l *Lexer) getOtherToken() *Token {
 	ch := l.Char
-	token := Token{}
+	token := Token{Type: ERROR, Content: string(ERROR)}
+	if ch == nil {
+		return &Token{Type: EOF, Content: string(EOF)}
+
+	}
 	switch *ch {
 	case '"':
 		{
