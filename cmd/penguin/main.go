@@ -10,5 +10,5 @@ import (
 )
 
 func main() {
-	fmt.Printf("It will work soon!")
+	fmt.Printf("It will work soon!\n")
 }
